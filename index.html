@@ -1,0 +1,174 @@
+---
+layout: default
+title: ML Engineer & Software Developer
+---
+
+{% assign data = site.data.content %}
+{% assign all_projects = site.projects | sort: "order" %}
+{% assign experiences = site.experiences | sort: "path" %}
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero__grid-bg"></div>
+  <div class="hero__glow"></div>
+
+  <div class="hero__inner">
+    <p class="hero__tag">{{ data.hero.tagline | default: "Available for opportunities · Madison, WI" }}</p>
+    <h3 class="hero__name">
+      {{ data.hero.first_name | default: "Riyad" }}<br>
+      <em>{{ data.hero.last_name | default: "Hassen" }}</em>
+    </h3>
+    <p class="hero__subtitle">{{ data.hero.subtitle }}</p>
+    <div class="hero__links">
+      <a href="mailto:{{ site.email }}" class="hero__cta">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+        Get in Touch
+      </a>
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="hero__link">GitHub</a>
+      <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="hero__link">LinkedIn</a>
+    </div>
+  </div>
+  <p class="hero__scroll">Scroll to explore</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section__inner">
+    <p class="section__label">About</p>
+    <div class="about__grid">
+      <div class="about__text reveal">
+        {% for para in data.about.paragraphs %}
+        <p>{{ para }}</p>
+        {% endfor %}
+      </div>
+      <div class="about__meta reveal">
+        {% for item in data.about.meta %}
+        <div class="about__meta-item">
+          <span class="about__meta-label">{{ item.label }}</span>
+          <span class="about__meta-value">
+            {% if item.link %}<a href="{{ item.link }}">{{ item.value }}</a>{% else %}{{ item.value }}{% endif %}
+          </span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE — driven entirely by _experiences/*.md files -->
+<section id="experience">
+  <div class="section__inner">
+    <p class="section__label">Experience</p>
+    <h2 class="section__title">Where I've Worked</h2>
+    <div class="experience__list">
+      {% for exp in experiences %}
+      <div class="exp-item reveal">
+        <div class="exp__meta">
+          <p class="exp__period">{{ exp.period }}</p>
+          <p class="exp__location">{{ exp.location }}</p>
+          {% if exp.current %}<span class="exp__current">Current</span>{% endif %}
+        </div>
+        <div class="exp__content">
+          <h3 class="exp__role">{{ exp.role }}</h3>
+          <p class="exp__company">{{ exp.company }}</p>
+          <ul class="exp__bullets">
+            {% for bullet in exp.bullets %}<li>{{ bullet }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS — driven entirely by _projects/*.md files -->
+<section id="projects">
+  <div class="section__inner">
+    <p class="section__label">Research & Projects</p>
+    <h2 class="section__title">Selected Work</h2>
+    <div class="projects__grid">
+      {% for project in all_projects %}
+      <a href="{{ project.url | relative_url }}" class="project-card reveal {% if project.featured %}project-card--featured{% endif %}">
+        {% if project.image and project.image != "" %}
+        <div class="project-card__image">
+          <img src="{{ '/assets/images/projects/' | append: project.image | relative_url }}" alt="{{ project.title }}" loading="lazy" />
+        </div>
+        {% endif %}
+        <div class="project-card__body">
+          <p class="project__number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</p>
+          <h3 class="project__name">{{ project.title }}</h3>
+          {% if project.subtitle %}<p class="project__subtitle-small">{{ project.subtitle }}</p>{% endif %}
+          <p class="project__desc">{{ project.description }}</p>
+          <div class="project__tags">
+            {% for tag in project.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          </div>
+          <span class="project__readmore">Read more →</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section__inner">
+    <p class="section__label">Skills</p>
+    <h2 class="section__title">Tools & Technologies</h2>
+    <div class="skills__grid">
+      {% for group in data.skills.groups %}
+      <div class="skills__group reveal">
+        <p class="skills__group-title">{{ group.title }}</p>
+        <div class="skills__list">
+          {% for skill in group.items %}<span class="skill-pill">{{ skill }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="certifications reveal">
+      <p class="section__label" style="margin-top:3rem;">Certifications</p>
+      <div class="certs__list">
+        {% for cert in data.certifications %}
+        <div class="cert-item">
+          <p class="cert__name">{{ cert.name }}</p>
+          <div class="cert__issuer-date">
+            <span class="cert__issuer">{{ cert.issuer }}</span>
+            <span class="cert__date">{{ cert.date }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section__inner">
+    <p class="section__label">Education</p>
+    <h2 class="section__title">Academic Background</h2>
+    <div class="edu__grid">
+      {% for edu in data.education %}
+      <div class="edu-card reveal">
+        <h3 class="edu__degree">{{ edu.degree }}</h3>
+        <p class="edu__school">{{ edu.school }}</p>
+        <p class="edu__meta">{{ edu.location }} · {{ edu.period }}</p>
+        <p class="edu__courses-label">Coursework</p>
+        <div class="edu__courses">
+          {% for course in edu.courses %}<span class="edu-tag">{{ course }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+{% for m in data.memberships %}
+<div class="membership">
+  <div class="membership__inner reveal">
+    <div class="membership__badge">{{ m.badge }}</div>
+    <p class="membership__text"><strong>{{ m.title }}.</strong> {{ m.description }}</p>
+  </div>
+</div>
+{% endfor %}

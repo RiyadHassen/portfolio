@@ -1,0 +1,55 @@
+title: Riyad Hassen
+description: ML Engineer & Software Developer
+author: Riyad Hassen
+email: rhassen@wisc.edu
+phone: "+1-608-692-8225"
+location: "Madison, WI, USA"
+github_username: RiyadHassen
+linkedin_username: riyadhassen
+
+baseurl: ""
+url: "https://riyad-hassen.github.io"
+
+# Build settings
+theme: null
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ─── COLLECTIONS ───────────────────────────────────────────────
+# Each collection item is a .md file in its folder.
+# output: true  → each file gets its own URL (e.g. /projects/visrag/)
+# output: false → items are only used on index / listing pages
+collections:
+  projects:
+    output: true               # gives each project its own page
+    permalink: /projects/:name/
+  experiences:
+    output: false              # experiences only appear on the homepage
+  pages:
+    output: true
+    permalink: /:name/
+
+# Default front-matter for each collection
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project          # uses _layouts/project.html
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page             # uses _layouts/page.html
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .jekyll-cache

@@ -1,0 +1,27 @@
+I"5<h2 id="overview">Overview</h2>
+
+<p>Inspired by the GeoGuesser game — given a street-level or scene image, predict the geographic location by reading visual clues (signs, architecture, vegetation, road markings).</p>
+
+<h2 id="pipeline">Pipeline</h2>
+
+<ol>
+  <li>
+    <p><strong>GeoReasoner:</strong> A Vision-Language Model pipeline based on Qwen2-VL, fine-tuned on the <strong>NaviClues</strong> dataset to perform explicit chain-of-thought geographic reasoning (“I see Cyrillic signage and birch trees → likely Eastern Europe/Russia”).</p>
+  </li>
+  <li>
+    <p><strong>RAG augmentation:</strong> A fine-tuned CLIP encoder retrieves visually similar geo-tagged reference images from a database, providing additional context to the generation step.</p>
+  </li>
+</ol>
+
+<h2 id="results">Results</h2>
+
+<p>Fine-tuning on NaviClues significantly improved country-level prediction accuracy over the zero-shot VLM baseline. RAG integration further reduced median distance error, especially for ambiguous regions that share visual features.</p>
+
+<h2 id="challenges">Challenges</h2>
+
+<ul>
+  <li>Geolocation is inherently ambiguous — many regions look similar.</li>
+  <li>NaviClues dataset required cleaning; many labels had GPS drift.</li>
+  <li>Balancing retrieval recall vs. latency when the reference image DB grows.</li>
+</ul>
+:ET

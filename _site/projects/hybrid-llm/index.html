@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hybrid LLM (Manticore) — Riyad Hassen</title>
+  <meta name="description" content="Re-implementation and fine-tuning of Manticore, a hybrid Transformer + Mamba State Space Model. Trained Jamba across multiple GPUs with DeepSpeed Pipeline Pa..." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">RH<span class="nav__logo-dot">.</span></a>
+      <ul class="nav__links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#skills">Skills</a></li>
+        <li><a href="/#education">Education</a></li>
+        <li><a href="mailto:rhassen@wisc.edu" class="nav__cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="project-page">
+    <div class="project-page__inner">
+
+      <!-- Back link -->
+      <a href="/#projects" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="14" height="14">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        All Projects
+      </a>
+
+      <!-- Header -->
+      <header class="project-page__header">
+        <div class="project-page__tags">
+          
+          <span class="tag">LLM</span>
+          
+          <span class="tag">Mamba SSM</span>
+          
+          <span class="tag">DeepSpeed</span>
+          
+          <span class="tag">Distributed Training</span>
+          
+        </div>
+
+        <h1 class="project-page__title">Hybrid LLM (Manticore)</h1>
+        
+        <p class="project-page__subtitle">Transformer + Mamba SSM distributed training</p>
+        
+
+        <!-- Links -->
+        
+        <div class="project-page__links">
+          
+          <a href="" target="_blank" rel="noopener" class="project-page__link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+            </svg>
+            View on GitHub
+          </a>
+          
+          
+          <a href="" target="_blank" rel="noopener" class="project-page__link project-page__link--demo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+            Live Demo
+          </a>
+          
+        </div>
+        
+      </header>
+
+      <!-- Hero Image -->
+      
+
+      <!-- Body content (the markdown below the front matter) -->
+      <div class="project-page__body prose">
+        <h2 id="overview">Overview</h2>
+
+<p>Manticore is a hybrid architecture that interleaves Transformer attention layers with Mamba State Space Model (SSM) layers — aiming to get the best of both: Transformer’s in-context learning ability and Mamba’s O(n) inference efficiency.</p>
+
+<h2 id="what-we-built">What We Built</h2>
+
+<ul>
+  <li>Re-implemented the Manticore hybrid architecture from the paper, integrating pretrained Transformer and Mamba checkpoint weights.</li>
+  <li>Fine-tuned and evaluated the hybrid model on downstream tasks, benchmarking against pure Transformer and pure Mamba baselines.</li>
+  <li>Scaled training of the <strong>Jamba Hybrid LLM</strong> across multiple GPUs using <strong>DeepSpeed</strong> with <strong>Pipeline Parallelism</strong>, partitioning the model’s hybrid layer stack across GPU stages.</li>
+</ul>
+
+<h2 id="technical-highlights">Technical Highlights</h2>
+
+<p>Pipeline Parallelism with hybrid architectures is non-trivial — Mamba’s recurrent state doesn’t partition the same way attention does. Managing the state boundary across pipeline stages required custom scheduling logic.</p>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Riyad Hassen</p>
+      <div class="footer__links">
+        <a href="https://github.com/RiyadHassen" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/riyadhassen" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:rhassen@wisc.edu">Email</a>
+      </div>
+      <p class="footer__copy">Built with Jekyll &amp; GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

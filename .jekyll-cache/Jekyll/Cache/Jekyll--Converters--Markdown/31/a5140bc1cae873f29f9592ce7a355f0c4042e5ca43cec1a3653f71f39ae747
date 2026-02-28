@@ -1,0 +1,16 @@
+I"_<h2 id="overview">Overview</h2>
+
+<p>InstructNeRF2NeRF enables text-driven editing of 3D scenes represented as NeRFs — e.g. “make it winter” applied to a full 3D scene captured from multiple views.</p>
+
+<h2 id="what-we-did">What We Did</h2>
+
+<ul>
+  <li>Re-implemented the InstructNeRF2NeRF pipeline from scratch, combining <strong>InstructPix2Pix</strong> (Stable Diffusion-based image editor) with <strong>NeRF</strong> rendering.</li>
+  <li>Identified and addressed the core inconsistency problem: editing individual views independently causes multi-view inconsistency when the edited images are used to update the NeRF.</li>
+  <li>Improved consistency by <strong>modifying the iterative dataset update schedule</strong> — selectively updating views based on edit confidence and spatial overlap, reducing flickering and geometric drift.</li>
+</ul>
+
+<h2 id="key-insight">Key Insight</h2>
+
+<p>The original paper’s dataset update strategy treats all views equally. Our modification weights updates by edit stability across nearby viewpoints, significantly reducing visible seams in synthesized novel views.</p>
+:ET

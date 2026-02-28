@@ -1,0 +1,24 @@
+I"<h2 id="overview">Overview</h2>
+
+<p>VisRAG is a Vision-based Retrieval Augmented Generation framework that uses Vision Language Models (VLMs) as the primary encoding mechanism for document retrieval — treating documents as images rather than extracted text.</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Traditional RAG pipelines rely on OCR or text extraction before encoding, which loses structural and visual information (tables, diagrams, layout). VisRAG preserves this by encoding document images directly.</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<ul>
+  <li><strong>Retrieval stage (VisRAG-Ret):</strong> Uses <a href="https://huggingface.co/Qwen/Qwen2-VL-7B-Instruct">Qwen2-VL</a> to encode document page images into dense vectors for similarity search.</li>
+  <li><strong>Generation stage:</strong> MiniCPM-v2.0 (multi-modal VLM) receives the top-k retrieved page images and generates a grounded answer.</li>
+  <li><strong>Baseline:</strong> Text-based OCR pipeline (TextRAG) used for benchmarking.</li>
+</ul>
+
+<h2 id="results">Results</h2>
+
+<p>Evaluated on an image document question-answering dataset. VisRAG outperformed TextRAG on layout-heavy documents where OCR degrades (multi-column PDFs, tables, figures with captions).</p>
+
+<h2 id="key-learnings">Key Learnings</h2>
+
+<p>Working with VLMs at retrieval scale requires careful batching and VRAM management. Qwen2-VL inference on page images is significantly more expensive than text embedding — retrieval latency is a real constraint worth engineering around.</p>
+:ET

@@ -1,0 +1,87 @@
+# ================================================================
+# _data/content.yml
+#
+# Controls: hero, about, skills, education, certifications,
+# and membership banners.
+#
+# ⚠️  Experiences → edit/add files in _experiences/
+# ⚠️  Projects    → edit/add files in _projects/
+# ================================================================
+
+hero:
+  first_name: "Riyad"
+  last_name: "Hassen"
+  tagline: "Available for opportunities · Madison, WI"
+  subtitle: >
+    MSc Computer Sciences @ UW–Madison. Building at the intersection
+    of Machine Learning, Computer Vision, and intelligent systems.
+
+about:
+  paragraphs:
+    - >
+      I'm a <strong>graduate researcher and engineer</strong> at the University of
+      Wisconsin–Madison, specializing in Machine Learning, Computer Vision, and NLP.
+      My research spans 3D Image editing with Diffusion Models, Vision Language Models and training distributed LLM.
+    - >
+      Previously, I spent three years as a software engineer in Addis Ababa building
+      scalable backend systems, and I interned at <strong>Amazon Seattle</strong> in
+      summer 2025 on the Alexa team.
+    - >
+      Outside of research, I mentor emerging engineers as part of <strong>Black in AI</strong>,
+      advocating for representation and inclusion across the field.
+  meta:
+    - label: "Status"
+      value: "MSc CS — UW–Madison (2023–2025)"
+    - label: "Focus"
+      value: "ML · Computer Vision · NLP · Foundation Models"
+    - label: "Location"
+      value: "Madison, WI, USA"
+    - label: "Email"
+      value: "rhassen@wisc.edu"
+      link: "mailto:rhassen@wisc.edu"
+    - label: "GitHub"
+      value: "github.com/RiyadHassen"
+      link: "https://github.com/RiyadHassen"
+
+skills:
+  groups:
+    - title: "Languages"
+      items: [Python, Java, Kotlin, JavaScript, C++]
+    - title: "ML / AI Frameworks"
+      items: [PyTorch, TensorFlow, Hugging Face, DeepSpeed]
+    - title: "Backend & Web"
+      items: [Node.js, NestJS, Flask, ReactJS]
+    - title: "Data & Infrastructure"
+      items: [SQL, PostgreSQL, MongoDB, GCP, Pandas, NumPy]
+    - title: "Mobile"
+      items: [Android, Kotlin]
+
+certifications:
+  - name: "Machine Learning with Python: From Linear Models to Deep Learning"
+    issuer: "MITx"
+    date: "May 2023"
+  - name: "DeepLearning.AI TensorFlow Developer"
+    issuer: "Coursera"
+    date: "May 2022"
+  - name: "Machine Learning — Neural Network & Deep Learning"
+    issuer: "Coursera"
+    date: "Aug 2021"
+
+education:
+  - degree: "MSc, Computer Sciences"
+    school: "University of Wisconsin–Madison"
+    location: "Madison, WI, USA"
+    period: "Aug 2023 – 2025"
+    courses: [Machine Learning, Computer Vision, NLP, Deep Learning, Foundation Models, Data Science, Big Data]
+  - degree: "BSc, Software Engineering"
+    school: "Addis Ababa University"
+    location: "Addis Ababa, Ethiopia"
+    period: "Sep 2016 – Oct 2021"
+    courses: [Data Structures & Algorithms, Databases, Robotics, Mobile Programming, Operating Systems, Distributed Systems, Web Programming]
+
+memberships:
+  - badge: "AI"
+    title: "Member & Mentor — Black in AI"
+    description: >
+      Increasing the presence and inclusion of Black researchers in
+      artificial intelligence through collaboration, mentorship, and advocacy.

@@ -1,0 +1,17 @@
+I"�<h2 id="overview">Overview</h2>
+
+<p>HakimHub is a healthcare information platform connecting patients with medical providers. I led the backend API development as part of the A2SV engineering team.</p>
+
+<h2 id="contributions">Contributions</h2>
+
+<ul>
+  <li>Designed the full <strong>database schema</strong> for patients, providers, appointments, and medical records.</li>
+  <li>Implemented <strong>REST API endpoints</strong> with Node.js / Express.js / NestJS following RESTful conventions.</li>
+  <li>Integrated third-party services: authentication (JWT + OAuth), transactional email, and real-time messaging.</li>
+  <li>Improved query performance by <strong>25%</strong> by rewriting N+1 queries, adding strategic indexes, and redesigning join-heavy schema relationships.</li>
+</ul>
+
+<h2 id="stack">Stack</h2>
+
+<p><code class="language-plaintext highlighter-rouge">NestJS</code> · <code class="language-plaintext highlighter-rouge">PostgreSQL</code> · <code class="language-plaintext highlighter-rouge">TypeORM</code> · <code class="language-plaintext highlighter-rouge">JWT</code> · <code class="language-plaintext highlighter-rouge">SendGrid</code> · <code class="language-plaintext highlighter-rouge">Socket.io</code></p>
+:ET

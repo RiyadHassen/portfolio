@@ -1,0 +1,16 @@
+I"t<h2 id="overview">Overview</h2>
+
+<p>Manticore is a hybrid architecture that interleaves Transformer attention layers with Mamba State Space Model (SSM) layers — aiming to get the best of both: Transformer’s in-context learning ability and Mamba’s O(n) inference efficiency.</p>
+
+<h2 id="what-we-built">What We Built</h2>
+
+<ul>
+  <li>Re-implemented the Manticore hybrid architecture from the paper, integrating pretrained Transformer and Mamba checkpoint weights.</li>
+  <li>Fine-tuned and evaluated the hybrid model on downstream tasks, benchmarking against pure Transformer and pure Mamba baselines.</li>
+  <li>Scaled training of the <strong>Jamba Hybrid LLM</strong> across multiple GPUs using <strong>DeepSpeed</strong> with <strong>Pipeline Parallelism</strong>, partitioning the model’s hybrid layer stack across GPU stages.</li>
+</ul>
+
+<h2 id="technical-highlights">Technical Highlights</h2>
+
+<p>Pipeline Parallelism with hybrid architectures is non-trivial — Mamba’s recurrent state doesn’t partition the same way attention does. Managing the state boundary across pipeline stages required custom scheduling logic.</p>
+:ET
