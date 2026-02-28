@@ -7,7 +7,7 @@ location: "Madison, WI, USA"
 github_username: RiyadHassen
 linkedin_username: riyadhassen
 
-baseurl: ""
+baseurl: "/portfolio"
 url: "https://riyad-hassen.github.io"
 
 # Build settings
