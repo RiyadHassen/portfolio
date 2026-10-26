@@ -1,4 +1,5 @@
 ---
+category: "industry"
 company: "Cybersoft PLC"
 role: "Software Engineering Intern"
 location: "Addis Ababa, Ethiopia"

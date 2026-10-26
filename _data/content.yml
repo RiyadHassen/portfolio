@@ -1,60 +1,85 @@
 # ================================================================
 # _data/content.yml
 #
-# Controls: hero, about, skills, education, certifications,
-# and membership banners.
+# Controls: profile header, research interests, news, about, skills,
+# education, publications, teaching, awards, and membership banners.
 #
-# ⚠️  Experiences → edit/add files in _experiences/
-# ⚠️  Projects    → edit/add files in _projects/
+#  Experiences (research/industry) → edit/add files in _experiences/
+# Projects                        → edit/add files in _projects/
 # ================================================================
 
 hero:
   first_name: "Riyad"
   last_name: "Hassen"
-  tagline: "Available for opportunities · Madison, WI"
+  cv_url: "/assets/resources/Riyad_Hassen_PhD_CV.pdf"
+  tagline: "MSc Computer Sciences, UW–Madison"
   subtitle: >
-    MSc Computer Sciences @ UW–Madison. Building at the intersection
-    of Machine Learning, Computer Vision, and intelligent systems.
+    My research interests lie at the intersection of computer vision and natural language processing, with a focus on multimodal reasoning in vision-language models, multilingual large language models (LLMs),
+    and efficient LLM architectures. My previous work includes applied computer vision for medical imaging, 3d vision, RAG and VLMs. 
+    I am also interested in advancing low-resource language technologies, retrieval systems, and agentic AI. 
+    
+
+research_interests:
+  - "Vision-Language Models"
+  - "computer vision/ NLP"
+  - "Multilingual & Low-Resource NLP"
+  - "Retrieval Systems"
+  - "Agentic AI"
+
+news:
+  - date: "May 2026"
+    text: "Completed MSc in Computer Sciences at the University of Wisconsin–Madison."
+  - date: "Jun 2026"
+    text: "Joined Amazon Web Services (AWS) in Seattle as a Software Engineer, building agentic AI internal tools."
+  - date: "Jan 2025"
+    text: "Started as a Graduate Researcher at UW–Madison, working on Transformer-based detection of Degenerative Cervical Myelopathy from video pose data."
+  - date: "Aug 2023"
+    text: "Awarded the Three-Year Graduate Teaching Fellowship at UW–Madison."
+  - date: "2021"
+    text: "Published undergraduate thesis on crop yield prediction with machine learning and deep learning in the Addis Ababa University Journal."
 
 about:
+  photo: "/assets/images/portfolio.png"
   paragraphs:
     - >
-      I'm a <strong>graduate researcher and engineer</strong> at the University of
-      Wisconsin–Madison, specializing in Machine Learning, Computer Vision, and NLP.
-      My research spans 3D Image editing with Diffusion Models, Vision Language Models and training distributed LLM.
+      I'm a <strong>graduate ML researcher and engineer</strong>  recently completing my MSc in Computer Sciences at the University of
+      Wisconsin–Madison. My work spans Vision-Language Models, retrieval-augmented
+      generation, and hybrid Transformer/state-space architectures, with a growing
+      focus on multilingual and low-resource language technologies.
     - >
-      Previously, I spent three years as a software engineer in Addis Ababa building
-      scalable backend systems, and I interned at <strong>Amazon Seattle</strong> in
-      summer 2025 on the Alexa team.
+      Previously, I worked as a software engineer in
+      as backend systems, and I've since worked at <strong>Amazon</strong> in Seattle —
+      first as a Software Engineering Intern, then as a full-time
+      Software Engineer on AWS, building agentic AI internal tools.
     - >
-      Outside of research, I mentor emerging engineers as part of <strong>Black in AI</strong>,
+      Alongside research, I've been a <strong>Graduate Teaching Fellow</strong> at UW–Madison
+      since 2023, and I mentor emerging engineers as part of <strong>Black in AI</strong>,
       advocating for representation and inclusion across the field.
   meta:
     - label: "Status"
-      value: "MSc CS — UW–Madison (2023–2025)"
+      value: "MSc CS, UW–Madison (2023–2026) — applying to PhD programs"
     - label: "Focus"
-      value: "ML · Computer Vision · NLP · Foundation Models"
+      value: "VLMs · RAG ·  NLP · RL"
     - label: "Location"
-      value: "Madison, WI, USA"
+      value: "Seattle, WA, USA"
     - label: "Email"
-      value: "rhassen@wisc.edu"
-      link: "mailto:rhassen@wisc.edu"
+      value: "rhassen@wisc.edu, riyadworku@gmail.com"
+      link: "mailto:rhassen@wisc.edu, mailto:riyadworku@gmail.com"
     - label: "GitHub"
       value: "github.com/RiyadHassen"
       link: "https://github.com/RiyadHassen"
+    - label: "LinkedIn"
+      value: "linkedin.com/in/riyadhassen"
+      link: "https://linkedin.com/in/riyadhassen"
 
 skills:
   groups:
-    - title: "Languages"
-      items: [Python, Java, Kotlin, JavaScript, C++]
-    - title: "ML / AI Frameworks"
-      items: [PyTorch, TensorFlow, Hugging Face, DeepSpeed]
-    - title: "Backend & Web"
-      items: [Node.js, NestJS, Flask, ReactJS]
-    - title: "Data & Infrastructure"
-      items: [SQL, PostgreSQL, MongoDB, GCP, Pandas, NumPy]
-    - title: "Mobile"
-      items: [Android, Kotlin]
+    - title: "ML / Research"
+      items: [PyTorch, TensorFlow, Pandas, NumPy]
+    - title: "Programming Languages"
+      items: [Python, C++, Java, Kotlin, JavaScript, SQL]
+    - title: "Frameworks & Tools"
+      items: [GCP, AWS, Android, Node.js, Flask, MongoDB, ReactJS]
 
 certifications:
   - name: "Machine Learning with Python: From Linear Models to Deep Learning"
@@ -62,22 +87,56 @@ certifications:
     date: "May 2023"
   - name: "DeepLearning.AI TensorFlow Developer"
     issuer: "Coursera"
-    date: "May 2022"
+    date: "May 2023"
   - name: "Machine Learning — Neural Network & Deep Learning"
     issuer: "Coursera"
-    date: "Aug 2021"
+    date: "Aug 2023"
 
 education:
   - degree: "MSc, Computer Sciences"
     school: "University of Wisconsin–Madison"
     location: "Madison, WI, USA"
-    period: "Aug 2023 – 2025"
-    courses: [Machine Learning, Computer Vision, NLP, Deep Learning, Foundation Models, Data Science, Big Data]
+    period: "Aug 2023 – May 2026"
+    courses: [Foundation Models, Advanced Deep Learning, NLP, Computer Vision, Machine Learning, Agentic AI, Artificial Intelligence, Big Data Systems]
   - degree: "BSc, Software Engineering"
     school: "Addis Ababa University"
     location: "Addis Ababa, Ethiopia"
     period: "Sep 2016 – Oct 2021"
     courses: [Data Structures & Algorithms, Databases, Robotics, Mobile Programming, Operating Systems, Distributed Systems, Web Programming]
+
+publications:
+  - title: "Crop Yield Prediction Using Machine Learning and Deep Learning"
+    authors: "R. W. Hassen"
+    venue: "Addis Ababa University Journal"
+    year: "2022"
+    note: "Undergraduate thesis"
+    pdf: "/assets/resources/Riyad_Hassen_PhD_CV.pdf"
+
+teaching:
+  role: "Graduate Teaching Fellow"
+  org: "University of Wisconsin–Madison"
+  period: "Aug 2023 – May 2026"
+  courses:
+    - code: "CS300"
+      title: "Programming II (OOP & Data Structures)"
+      detail: "Design course projects, assist class of 800+ students"
+      terms: "Fall 2023 · Spring 2024 · Fall 2024 · Spring 2025"
+    - code: "CS200"
+      title: "Programming I (Intro to Object-Oriented Programming)"
+      detail: ""
+      terms: "Fall 2025"
+    - code: "CS600"
+      title: "Software Engineering Industry Capstone Project"
+      detail: ""
+      terms: "Spring 2026"
+
+awards:
+  - title: "Three-Year Graduate Teaching Fellowship"
+    org: "University of Wisconsin–Madison"
+    date: "Aug 2023"
+  - title: "BSc in Software Engineering, with Distinction"
+    org: "Addis Ababa University"
+    date: "Oct 2021"
 
 memberships:
   - badge: "AI"

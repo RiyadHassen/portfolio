@@ -1,12 +1,21 @@
 // Nav scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-    nav.style.background = 'rgba(13,13,13,0.97)';
-  } else {
-    nav.style.background = 'rgba(13,13,13,0.85)';
-  }
+  nav.classList.toggle('nav--scrolled', window.scrollY > 20);
 }, { passive: true });
+
+// Dark mode toggle (persisted in localStorage, defaults to light)
+const themeToggle = document.getElementById('themeToggle');
+themeToggle?.addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+});
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');

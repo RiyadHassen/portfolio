@@ -6,42 +6,49 @@ title: ML Engineer & Software Developer
 {% assign data = site.data.content %}
 {% assign all_projects = site.projects | sort: "order" %}
 {% assign experiences = site.experiences | sort: "path" %}
+{% assign research_exp = experiences | where: "category", "research" %}
+{% assign industry_exp = experiences | where: "category", "industry" %}
 
-<!-- HERO -->
+<!-- PROFILE / ABOUT (replaces hero) -->
 <section id="home">
   <div class="hero__grid-bg"></div>
   <div class="hero__glow"></div>
 
-  <div class="hero__inner">
-    <p class="hero__tag">{{ data.hero.tagline | default: "Available for opportunities · Madison, WI" }}</p>
-    <h3 class="hero__name">
-      {{ data.hero.first_name | default: "Riyad" }}<br>
-      <em>{{ data.hero.last_name | default: "Hassen" }}</em>
-    </h3>
-    <p class="hero__subtitle">{{ data.hero.subtitle }}</p>
-    <div class="hero__links">
-      <a href="mailto:{{ site.email }}" class="hero__cta">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-        Get in Touch
-      </a>
-      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="hero__link">GitHub</a>
-      <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="hero__link">LinkedIn</a>
+  <div class="profile__inner">
+    <div class="profile__header reveal">
+      <div class="profile__photo-wrap">
+        <img src="{{ data.about.photo | relative_url }}" alt="Portrait of {{ data.hero.first_name }} {{ data.hero.last_name }}" />
+      </div>
+      <div class="profile__identity">
+        <p class="hero__tag">{{ data.hero.tagline }}</p>
+        <h1 class="hero__name profile__name">{{ data.hero.first_name }} <em>{{ data.hero.last_name }}</em></h1>
+        <p class="hero__subtitle">{{ data.hero.subtitle }}</p>
+        <div class="hero__links">
+          <a href="{{ data.hero.cv_url | relative_url }}" target="_blank" rel="noopener" class="hero__cta">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 12m0 0l4.5-4.5M12 12V3" /></svg>
+            Download CV
+          </a>
+          <a href="mailto:{{ site.email }}" class="hero__link">Email</a>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="hero__link">GitHub</a>
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="hero__link">LinkedIn</a>
+        </div>
+      </div>
     </div>
-  </div>
-  <p class="hero__scroll">Scroll to explore</p>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section__inner">
-    <p class="section__label">About</p>
-    <div class="about__grid">
-      <div class="about__text reveal">
+    <div class="profile__research-interests reveal">
+      <p class="about__meta-label">Research Interests</p>
+      <div class="skills__list">
+        {% for interest in data.research_interests %}<span class="skill-pill">{{ interest }}</span>{% endfor %}
+      </div>
+    </div>
+
+    <div class="about__grid reveal">
+      <div class="about__text">
         {% for para in data.about.paragraphs %}
         <p>{{ para }}</p>
         {% endfor %}
       </div>
-      <div class="about__meta reveal">
+      <div class="about__meta">
         {% for item in data.about.meta %}
         <div class="about__meta-item">
           <span class="about__meta-label">{{ item.label }}</span>
@@ -55,13 +62,29 @@ title: ML Engineer & Software Developer
   </div>
 </section>
 
-<!-- EXPERIENCE — driven entirely by _experiences/*.md files -->
-<section id="experience">
+<!-- NEWS -->
+<section id="news">
   <div class="section__inner">
-    <p class="section__label">Experience</p>
-    <h2 class="section__title">Where I've Worked</h2>
+    <p class="section__label">News</p>
+    <div class="news__list">
+      {% for item in data.news %}
+      <div class="news-item reveal">
+        <span class="news__date">{{ item.date }}</span>
+        <span class="news__text">{{ item.text }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH — research experience + research projects -->
+<section id="research">
+  <div class="section__inner">
+    <p class="section__label">Research</p>
+
+    {% if research_exp.size > 0 %}
     <div class="experience__list">
-      {% for exp in experiences %}
+      {% for exp in research_exp %}
       <div class="exp-item reveal">
         <div class="exp__meta">
           <p class="exp__period">{{ exp.period }}</p>
@@ -78,15 +101,9 @@ title: ML Engineer & Software Developer
       </div>
       {% endfor %}
     </div>
-  </div>
-</section>
+    {% endif %}
 
-<!-- PROJECTS — driven entirely by _projects/*.md files -->
-<section id="projects">
-  <div class="section__inner">
-    <p class="section__label">Research & Projects</p>
-    <h2 class="section__title">Selected Work</h2>
-    <div class="projects__grid">
+    <div class="projects__grid" style="margin-top: 3rem;">
       {% for project in all_projects %}
       <a href="{{ project.url | relative_url }}" class="project-card reveal {% if project.featured %}project-card--featured{% endif %}">
         {% if project.image and project.image != "" %}
@@ -110,11 +127,73 @@ title: ML Engineer & Software Developer
   </div>
 </section>
 
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section__inner">
+    <p class="section__label">Publications</p>
+    <div class="pub__list">
+      {% for pub in data.publications %}
+      <div class="pub-item reveal">
+        <p class="pub__title">{{ pub.title }}</p>
+        <p class="pub__meta">{{ pub.authors }} &middot; <em>{{ pub.venue }}</em>, {{ pub.year }}{% if pub.note %} &middot; {{ pub.note }}{% endif %}</p>
+        {% if pub.pdf %}
+        <a href="{{ pub.pdf | relative_url }}" target="_blank" rel="noopener" class="pub__link">PDF →</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY EXPERIENCE -->
+<section id="experience">
+  <div class="section__inner">
+    <p class="section__label">Industry Experience</p>
+    <div class="experience__list">
+      {% for exp in industry_exp %}
+      <div class="exp-item reveal">
+        <div class="exp__meta">
+          <p class="exp__period">{{ exp.period }}</p>
+          <p class="exp__location">{{ exp.location }}</p>
+          {% if exp.current %}<span class="exp__current">Current</span>{% endif %}
+        </div>
+        <div class="exp__content">
+          <h3 class="exp__role">{{ exp.role }}</h3>
+          <p class="exp__company">{{ exp.company }}</p>
+          <ul class="exp__bullets">
+            {% for bullet in exp.bullets %}<li>{{ bullet }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section__inner">
+    <p class="section__label">Teaching</p>
+    <p class="teaching__org">{{ data.teaching.org }} &middot; {{ data.teaching.period }}</p>
+    <div class="teaching__list">
+      {% for course in data.teaching.courses %}
+      <div class="teaching-item reveal">
+        <div class="teaching__code">{{ course.code }}</div>
+        <div class="teaching__body">
+          <p class="teaching__title">{{ course.title }}</p>
+          {% if course.detail and course.detail != "" %}<p class="teaching__detail">{{ course.detail }}</p>{% endif %}
+          <p class="teaching__terms">{{ course.terms }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="section__inner">
     <p class="section__label">Skills</p>
-    <h2 class="section__title">Tools & Technologies</h2>
     <div class="skills__grid">
       {% for group in data.skills.groups %}
       <div class="skills__group reveal">
@@ -146,7 +225,6 @@ title: ML Engineer & Software Developer
 <section id="education">
   <div class="section__inner">
     <p class="section__label">Education</p>
-    <h2 class="section__title">Academic Background</h2>
     <div class="edu__grid">
       {% for edu in data.education %}
       <div class="edu-card reveal">
@@ -156,6 +234,24 @@ title: ML Engineer & Software Developer
         <p class="edu__courses-label">Coursework</p>
         <div class="edu__courses">
           {% for course in edu.courses %}<span class="edu-tag">{{ course }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section__inner">
+    <p class="section__label">Awards</p>
+    <div class="certs__list">
+      {% for award in data.awards %}
+      <div class="cert-item reveal">
+        <p class="cert__name">{{ award.title }}</p>
+        <div class="cert__issuer-date">
+          <span class="cert__issuer">{{ award.org }}</span>
+          <span class="cert__date">{{ award.date }}</span>
         </div>
       </div>
       {% endfor %}

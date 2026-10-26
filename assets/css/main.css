@@ -1,22 +1,31 @@
 /* ============================================================
    RIYAD HASSEN PORTFOLIO
-   Design: Dark editorial — ink black + warm amber + cream
+   Design: Monochrome editorial — light background by default,
+   with a black-background dark theme toggled via [data-theme].
    Typography: DM Serif Display + DM Mono + DM Sans
+
+   Token names (--ink/--cream/--amber/...) are kept stable across
+   both themes and just swap meaning: --ink = page background,
+   --cream = primary text, --amber = accent. This lets every rule
+   below stay theme-agnostic instead of branching per theme.
    ============================================================ */
 
 :root {
-  --ink: #0d0d0d;
-  --ink-soft: #1a1a1a;
-  --ink-mid: #2a2a2a;
-  --amber: #d4900a;
-  --amber-light: #f0ab2a;
-  --amber-dim: rgba(212, 144, 10, 0.12);
-  --cream: #f5f0e8;
-  --cream-dim: rgba(245, 240, 232, 0.06);
-  --muted: #888;
-  --muted-light: #aaa;
-  --border: rgba(245, 240, 232, 0.08);
-  --border-amber: rgba(212, 144, 10, 0.25);
+  --ink: #ffffff;
+  --ink-soft: #f5f5f5;
+  --ink-mid: #e9e9e9;
+  --amber: #111111;
+  --amber-light: #000000;
+  --amber-dim: rgba(0, 0, 0, 0.06);
+  --cream: #111111;
+  --cream-dim: rgba(0, 0, 0, 0.05);
+  --muted: #666666;
+  --muted-light: #333333;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-amber: rgba(0, 0, 0, 0.3);
+  --glow: rgba(0, 0, 0, 0.05);
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.97);
 
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-mono: 'DM Mono', 'Courier New', monospace;
@@ -24,6 +33,24 @@
 
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 2px;
+}
+
+[data-theme="dark"] {
+  --ink: #0a0a0a;
+  --ink-soft: #141414;
+  --ink-mid: #202020;
+  --amber: #f5f5f5;
+  --amber-light: #ffffff;
+  --amber-dim: rgba(255, 255, 255, 0.08);
+  --cream: #f5f5f5;
+  --cream-dim: rgba(255, 255, 255, 0.06);
+  --muted: #999999;
+  --muted-light: #bbbbbb;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-amber: rgba(255, 255, 255, 0.3);
+  --glow: rgba(255, 255, 255, 0.06);
+  --nav-bg: rgba(10, 10, 10, 0.85);
+  --nav-bg-scrolled: rgba(10, 10, 10, 0.97);
 }
 
 /* ---- Reset ---- */
@@ -36,6 +63,7 @@ body {
   font-weight: 300;
   line-height: 1.7;
   overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
 }
 
 a { color: var(--amber); text-decoration: none; transition: color var(--transition); }
@@ -64,12 +92,14 @@ body::before {
   right: 0;
   z-index: 100;
   padding: 0 2rem;
-  background: rgba(13, 13, 13, 0.85);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   transition: background var(--transition);
 }
+
+.nav--scrolled { background: var(--nav-bg-scrolled); }
 
 .nav__inner {
   max-width: 1200px;
@@ -94,6 +124,12 @@ body::before {
   display: flex;
   gap: 2rem;
   align-items: center;
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav__links a {
@@ -135,6 +171,27 @@ body::before {
   transition: transform var(--transition), opacity var(--transition);
 }
 
+/* ---- Theme toggle ---- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: none;
+  color: var(--cream);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+  flex-shrink: 0;
+}
+.theme-toggle:hover { border-color: var(--border-amber); color: var(--amber); }
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
 /* ============================================================
    SECTIONS BASE
    ============================================================ */
@@ -175,16 +232,61 @@ section { padding: 6rem 2rem; }
 }
 
 /* ============================================================
-   HERO
+   PROFILE HEADER (replaces full-viewport hero)
    ============================================================ */
 #home {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
+  padding: 9.5rem 2rem 5rem;
   position: relative;
   overflow: hidden;
 }
+
+.profile__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.profile__header {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.profile__photo-wrap {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--ink-mid);
+}
+
+.profile__photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.4);
+  transition: filter var(--transition);
+}
+
+.profile__photo-wrap:hover img { filter: grayscale(0); }
+
+.profile__identity { flex: 1; min-width: 0; }
+.hero__name.profile__name {
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  margin-bottom: 1rem;
+}
+
+.profile__research-interests {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.profile__research-interests .about__meta-label { margin-bottom: 0.9rem; }
 
 .hero__grid-bg {
   position: absolute;
@@ -204,7 +306,7 @@ section { padding: 6rem 2rem; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(212, 144, 10, 0.08) 0%, transparent 65%);
+  background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -294,36 +396,9 @@ section { padding: 6rem 2rem; }
   transform: translateY(-2px);
 }
 
-.hero__scroll {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 2rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  animation: fadeUp 0.8s 0.5s ease both;
-}
-.hero__scroll::before {
-  content: '';
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--amber), transparent);
-}
-
 /* ============================================================
-   ABOUT
+   ABOUT (within #home)
    ============================================================ */
-#about {
-  background: var(--ink-soft);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -465,7 +540,11 @@ section { padding: 6rem 2rem; }
 /* ============================================================
    PROJECTS
    ============================================================ */
-#projects { background: var(--ink-soft); }
+#research { border-top: 1px solid var(--border); }
+#publications { background: var(--ink-soft); border-top: 1px solid var(--border); }
+#experience { border-top: 1px solid var(--border); }
+#teaching { background: var(--ink-soft); border-top: 1px solid var(--border); }
+#awards { border-top: 1px solid var(--border); }
 
 .projects__grid {
   display: grid;
@@ -728,6 +807,130 @@ section { padding: 6rem 2rem; }
 }
 
 /* ============================================================
+   NEWS
+   ============================================================ */
+#news { background: var(--ink-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.news__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.news-item:first-child { border-top: 1px solid var(--border); }
+
+.news__date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--amber);
+  letter-spacing: 0.05em;
+}
+
+.news__text {
+  font-size: 0.92rem;
+  color: var(--muted-light);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   PUBLICATIONS
+   ============================================================ */
+.pub__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.pub-item {
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  background: var(--ink-soft);
+  transition: border-color var(--transition);
+}
+.pub-item:hover { border-color: var(--border-amber); }
+
+.pub__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.pub__meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.9rem;
+}
+
+.pub__link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
+
+/* ============================================================
+   TEACHING
+   ============================================================ */
+.teaching__org {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 2.5rem;
+}
+
+.teaching__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.teaching-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.teaching-item:first-child { border-top: 1px solid var(--border); }
+
+.teaching__code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--amber);
+  letter-spacing: 0.05em;
+  padding-top: 0.15rem;
+}
+
+.teaching__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.teaching__detail {
+  font-size: 0.85rem;
+  color: var(--muted-light);
+  margin-bottom: 0.4rem;
+}
+
+.teaching__terms {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
    MEMBERSHIP BANNER
    ============================================================ */
 .membership {
@@ -837,7 +1040,9 @@ section { padding: 6rem 2rem; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
-  .about__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .profile__header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .profile__photo-wrap { width: 120px; height: 120px; }
   .skills__grid { grid-template-columns: 1fr 1fr; }
   .edu__grid { grid-template-columns: 1fr; }
 
@@ -846,6 +1051,8 @@ section { padding: 6rem 2rem; }
     gap: 0.75rem;
   }
   .exp__meta { display: flex; gap: 1.5rem; align-items: center; }
+
+  .teaching-item { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 
 @media (max-width: 640px) {

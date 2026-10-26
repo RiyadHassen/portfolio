@@ -1,4 +1,5 @@
 ---
+category: "industry"
 company: "Amazon"
 role: "Software Engineering Intern"
 location: "Seattle, WA"
