@@ -12,52 +12,53 @@ hero:
   first_name: "Riyad"
   last_name: "Hassen"
   cv_url: "/assets/resources/Riyad_Hassen_PhD_CV.pdf"
-  tagline: "MSc Computer Sciences, UW–Madison"
+  tagline: "MSc Computer Sciences, University of Wisconsin–Madison"
   subtitle: >
-    My research interests lie at the intersection of computer vision and natural language processing, with a focus on multimodal reasoning in vision-language models, multilingual large language models (LLMs),
-    and efficient LLM architectures. My previous work includes applied computer vision for medical imaging, 3d vision, RAG and VLMs. 
-    I am also interested in advancing low-resource language technologies, retrieval systems, and agentic AI. 
+    My research interests lie at the intersection of computer vision and natural language processing, with a focus on multimodal 
+    reasoning in vision-language models, multilingual large language models (LLMs),
+    and efficient LLM architectures. My previous work includes applied computer vision for medical imaging, 3D vision, RAG and VLMs. 
+    I am also interested in LLMs for low-resource language technologies, retrieval systems, and agentic AI. 
     
 
 research_interests:
   - "Vision-Language Models"
   - "computer vision/ NLP"
+  - "Reinforcement Learning"
   - "Multilingual & Low-Resource NLP"
   - "Retrieval Systems"
   - "Agentic AI"
 
 news:
+  - date: "Jun 2026"
+    text: "Joined Amazon Web Services (AWS) in Seattle as a Software Engineer"
   - date: "May 2026"
     text: "Completed MSc in Computer Sciences at the University of Wisconsin–Madison."
-  - date: "Jun 2026"
-    text: "Joined Amazon Web Services (AWS) in Seattle as a Software Engineer, building agentic AI internal tools."
   - date: "Jan 2025"
-    text: "Started as a Graduate Researcher at UW–Madison, working on Transformer-based detection of Degenerative Cervical Myelopathy from video pose data."
+    text: "Started as a Graduate Researcher "
   - date: "Aug 2023"
-    text: "Awarded the Three-Year Graduate Teaching Fellowship at UW–Madison."
-  - date: "2021"
+    text: "Awarded Three-Year Graduate Teaching Fellowship at UW–Madison."
+  - date: "2022"
     text: "Published undergraduate thesis on crop yield prediction with machine learning and deep learning in the Addis Ababa University Journal."
 
 about:
   photo: "/assets/images/portfolio.png"
   paragraphs:
     - >
-      I'm a <strong>graduate ML researcher and engineer</strong>  recently completing my MSc in Computer Sciences at the University of
+      I'm a <strong>graduate ML researcher and engineer</strong>  recently completed my MSc in Computer Sciences at the University of
       Wisconsin–Madison. My work spans Vision-Language Models, retrieval-augmented
-      generation, and hybrid Transformer/state-space architectures, with a growing
+      generation, and hybrid LLM architectures, with a growing
       focus on multilingual and low-resource language technologies.
     - >
-      Previously, I worked as a software engineer in
-      as backend systems, and I've since worked at <strong>Amazon</strong> in Seattle —
-      first as a Software Engineering Intern, then as a full-time
-      Software Engineer on AWS, building agentic AI internal tools.
+      Recently joined Amazon Web Services (AWS) as a Software Engineer. Previously, I worked as a software engineer in
+      as backend developer, and I've since worked at <strong>Amazon</strong> in Seattle —
+      first as a Software Engineering Intern.
     - >
       Alongside research, I've been a <strong>Graduate Teaching Fellow</strong> at UW–Madison
       since 2023, and I mentor emerging engineers as part of <strong>Black in AI</strong>,
       advocating for representation and inclusion across the field.
   meta:
     - label: "Status"
-      value: "MSc CS, UW–Madison (2023–2026) — applying to PhD programs"
+      value: "MSc CS, University of Wisconsin–Madison (2023–2026)"
     - label: "Focus"
       value: "VLMs · RAG ·  NLP · RL"
     - label: "Location"
@@ -96,7 +97,7 @@ education:
   - degree: "MSc, Computer Sciences"
     school: "University of Wisconsin–Madison"
     location: "Madison, WI, USA"
-    period: "Aug 2023 – May 2026"
+    period: "Aug 2023 – Dec 2025"
     courses: [Foundation Models, Advanced Deep Learning, NLP, Computer Vision, Machine Learning, Agentic AI, Artificial Intelligence, Big Data Systems]
   - degree: "BSc, Software Engineering"
     school: "Addis Ababa University"
